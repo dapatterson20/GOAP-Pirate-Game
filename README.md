@@ -19,12 +19,19 @@ The planner displays the plan at the bottom of the screen, displaying the names 
 The necessary GOAP files are located in the Assets>Pirate Game>GOAP folder, along with some actions needed for the sample level.
 To create a new action for the planner to use:
 1.	Create a new script as a subclass of the GOAPActionParent.cs file, and program your action for the NPC to take from there. The contents of the action are entirely up to the developer, as long as it supplies values to the necessary variables for the planner script to use:
+
   a. Prerequisites and PrereqOpposites, both string[] variables that contain the “ready” and “not ready” states of other actions.
+  
   b. Effect and OppEffect, both string variables that are the “ready” and “not ready” states of this particular action.
+  
   c. Cost: Int that determines how difficult it would be for this action to be performed, with 0 meaning no difficulty.
+  
   d. Name: String containing the name of this action
+  
   e. Func: Lambda function which tells the planner which function from this script to run when this action needs to be executed.
+  
   f. Context: Optional string variable that supplies context of action being performed to be displayed on screen (for developers only)
+  
 3.	Create an instance of this script in the game world under the GOAPScripts GameObject and add it to the Planner’s array of actions, as well as either its “ready” or “not ready” state to the Planner’s game state array as needed.
 4.	Call the planner’s parseAction() and planAction() functions and input this action’s entry in the planner’s actions array to create and execute a plan based on it (see scripts in objects from sample level for examples).
 For an explanation of the GOAP system and how the planner works, see the attached PowerPoint:
